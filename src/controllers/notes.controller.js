@@ -38,7 +38,7 @@ notesController.updateNote = async (req, res) => {
         date,
         author
     } = req.body;
-    await Note.findOneAndUpdate(req.params.id, {
+    await Note.findByIdAndUpdate(req.params.id, {
         title,
         content,
         date,
@@ -50,7 +50,7 @@ notesController.updateNote = async (req, res) => {
 };
 
 notesController.deleteNote = async (req, res) => {
-    await Note.findOneAndDelete(req.params.id);
+    await Note.findByIdAndDelete(req.params.id);
     res.json({
         message: "Note deleted",
     });
